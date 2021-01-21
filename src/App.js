@@ -1,22 +1,13 @@
-import './assets/scss/App.scss'
+import SearchBox from './components/molecules/SearchBox/SearchBox'
+import HomeTitle from './components/molecules/HomeTitle/HomeTitle'
+import Container from './components/atoms/Container/Container'
 
 function App () {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <HomeTitle />
+      <SearchBox />
+    </Container>
   )
 }
 
