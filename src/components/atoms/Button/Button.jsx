@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import './style.scss'
 
 const Button = ({ placeholder = '', icon, type = 'submit', className = '', handleClick }) => {
   return (
