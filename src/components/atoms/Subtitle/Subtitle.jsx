@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import './style.scss'
 
-const Subtitle = ({ text }) => {
+const Subtitle = ({ text, className = '' }) => {
   return (
-    <h4 className='subtitle'>
+    <h4 className={`subtitle ${className}`}>
       {text}
     </h4>
   )
@@ -12,5 +12,6 @@ const Subtitle = ({ text }) => {
 export default Subtitle
 
 Subtitle.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string,
+  className: PropTypes.string
 }
