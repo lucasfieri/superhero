@@ -1,0 +1,11 @@
+.container {
+  background-image: url('../../../assets/images/background.svg');
+  background-size: cover;
+  height: 100vh;
+  background-position: center top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20vw;
+  justify-content: space-evenly;
+}
