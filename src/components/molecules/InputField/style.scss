@@ -1,0 +1,10 @@
+.inputField {
+  padding: 25px 0px;
+  &__label {
+    display: block;
+    padding-bottom: 10px;
+  }
+  &__input {
+    height: 30px;
+  }
+}
