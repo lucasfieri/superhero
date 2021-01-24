@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import './style.scss'
 
-const Subtitle = ({ text, className = '' }) => {
+const Subtitle = ({ text, className = null }) => {
   return (
     <h4 className={`subtitle ${className}`}>
       {text}
