@@ -1,10 +1,11 @@
 import {
-  useState,
   useImperativeHandle,
   forwardRef,
   useCallback,
   useEffect
 } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { decideModal, closeModal } from '../../../ducks/modal'
 import { createPortal } from 'react-dom'
 import { element, string, arrayOf, bool } from 'prop-types'
 
@@ -12,29 +13,30 @@ import './style.scss'
 
 const modalElement = document.getElementById('modal-root')
 
-const Modal = ({ className = null, fade = false, children, defaultOpened = false }, ref) => {
-  const [isOpen, setIsOpen] = useState(defaultOpened)
+const Modal = ({ className = null, fade = false, children }, ref) => {
+  const isModalOpen = useSelector(state => state.modal.isModalOpen)
+  const dispatch = useDispatch()
 
-  const close = useCallback(() => setIsOpen(false), [])
+  const close = useCallback(() => dispatch(decideModal(isModalOpen)), [dispatch, isModalOpen])
 
   useImperativeHandle(ref, () => ({
-    open: () => setIsOpen(true),
+    open: () => dispatch(decideModal(isModalOpen)),
     close
-  }), [close])
+  }), [dispatch, isModalOpen, close])
 
   const handleEscape = useCallback(event => {
-    if (event.keyCode === 27) close()
-  }, [close])
+    if (event.keyCode === 27) dispatch(closeModal())
+  }, [dispatch])
 
   useEffect(() => {
-    if (isOpen) document.addEventListener('keydown', handleEscape, false)
+    if (isModalOpen) document.addEventListener('keydown', handleEscape, false)
     return () => {
       document.removeEventListener('keydown', handleEscape, false)
     }
-  }, [handleEscape, isOpen])
+  }, [handleEscape, isModalOpen])
 
   return createPortal(
-    isOpen
+    isModalOpen
       ? (
         <div className={`modal ${fade ? 'modal-fade' : ''} ${className}`}>
           <div aria-hidden className='modal-overlay' onClick={close} />
@@ -51,6 +53,5 @@ export default forwardRef(Modal)
 Modal.propTypes = {
   className: string,
   children: arrayOf([string, element]),
-  defaultOpened: bool,
   fade: bool
 }
