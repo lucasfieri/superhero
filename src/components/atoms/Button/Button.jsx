@@ -1,21 +1,23 @@
 import PropTypes from 'prop-types'
+import { forwardRef } from 'react'
+
 import './style.scss'
 
-const Button = ({ placeholder = '', icon, type = 'submit', className = '', handleClick }) => {
+const Button = ({ placeholder = null, icon, type = 'button', variation = null, handleClick }, ref) => {
   return (
-    <button className={`button ${className}`} onClick={handleClick} type={type}>
+    <button className={`button ${variation}`} onClick={handleClick} type={type} ref={ref}>
       {placeholder}
       {icon}
     </button>
   )
 }
 
-export default Button
+export default forwardRef(Button)
 
 Button.propTypes = {
   placeholder: PropTypes.string,
   type: PropTypes.string,
-  className: PropTypes.string,
+  variation: PropTypes.string,
   handleClick: PropTypes.func.isRequired,
   icon: PropTypes.element
 }
