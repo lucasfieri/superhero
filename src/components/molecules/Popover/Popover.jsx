@@ -1,11 +1,14 @@
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { decidePopover } from '../../../ducks/popover'
 import { Popover as PopoverTiny } from 'react-tiny-popover'
 import Buttom from '../../atoms/Button/Button'
 import PropTypes from 'prop-types'
 import './style.scss'
 
 const Popover = ({ positions, content, buttonIcon, buttonVariation }) => {
-  const [isPopoverOpen, setIsPopoverOpen] = useState()
+  const isPopoverOpen = useSelector(state => state.popover.isPopoverOpen)
+  const dispatch = useDispatch()
+
   return (
     <PopoverTiny
       containerClassName='popover_tiny'
@@ -13,10 +16,10 @@ const Popover = ({ positions, content, buttonIcon, buttonVariation }) => {
       positions={positions}
       padding={10}
       content={content}
-      onClickOutside={() => setIsPopoverOpen(!isPopoverOpen)}
+      onClickOutside={() => dispatch(decidePopover(isPopoverOpen))}
     >
       <Buttom
-        handleClick={() => setIsPopoverOpen(!isPopoverOpen)}
+        handleClick={() => dispatch(decidePopover(isPopoverOpen))}
         variation={buttonVariation}
         type='button'
         icon={buttonIcon}
