@@ -1,14 +1,28 @@
 .button {
   border: none;
   margin: 0;
-  padding: 0;
   cursor: pointer;
-  background-color: #F52E4E;
   border-radius: 10px;
   box-shadow: 3px 4px 4px 1px rgba(0,0,0,0.10);
   flex: 2 2 15%;
   padding: 5px 0;
+  color: white;
   svg {
     height: 30px;
   }
+  &.btn-primary {
+    background-color: #F52E4E;
+  }
+  &.btn-secondary {
+    background-color:#FFA694
+  }
+  &.btn-outline {
+    background-color: transparent;
+    border: 1px solid #F52E4E;
+    transition: background-color 500ms ease;
+    &:hover {
+      background-color: #F52E4E;
+    }
+  }
 }
+
