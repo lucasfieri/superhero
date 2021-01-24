@@ -1,0 +1,33 @@
+.filterForm {
+  &__powerLabel {
+    margin-bottom: 10px;
+
+  }
+  &__powerInputs {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+  }
+  &__subtitle {
+    text-align: center;
+    text-shadow: none;
+    text-transform: none;
+    font-size: 1.2rem;
+  }
+  &__buttonsContainer {
+    display: flex;
+    width: 100%;
+    &__button {
+      margin: 0 5px;
+    }
+  }
+  &__rangeSlider {
+    display: flex;
+    padding: 10px 10px 30px 10px;
+    &__span {
+      flex: 2 2 20%;
+      padding-left: 20px;
+      text-decoration: underline;
+    }
+  }
+}
