@@ -1,7 +1,16 @@
-import PropTypes from 'prop-types'
+import { forwardRef } from 'react'
+import { string, number, oneOfType } from 'prop-types'
 import './style.scss'
 
-const Input = ({ placeholder = '', type = 'text', name, value, className = '' }) => {
+const Input = ({
+  placeholder = null,
+  type = 'text',
+  className = '',
+  name,
+  value,
+  id,
+  ...props
+}, ref) => {
   return (
     <input
       className={`input ${className}`}
@@ -9,16 +18,20 @@ const Input = ({ placeholder = '', type = 'text', name, value, className = '' })
       name={name}
       placeholder={placeholder}
       value={value}
+      id={id}
+      ref={ref}
+      {...props}
     />
   )
 }
 
-export default Input
+export default forwardRef(Input)
 
 Input.propTypes = {
-  placeholder: PropTypes.string,
-  type: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  className: PropTypes.string
+  placeholder: string,
+  type: string,
+  name: string.isRequired,
+  value: oneOfType([string, number]),
+  className: string,
+  id: string
 }
