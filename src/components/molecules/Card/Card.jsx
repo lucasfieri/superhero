@@ -1,17 +1,28 @@
 import React from 'react'
 import Subtitle from '../../atoms/Subtitle/Subtitle'
+import notFound from '../../../assets/images/notfound.jpg'
+import { string } from 'prop-types'
+
 import './style.scss'
 
-const Card = () => {
+const Card = ({ imageSrc, heroName, heroPublisher }) => {
   return (
+    /* eslint-disable no-return-assign */
     <div className='card'>
-      <img className='card__image' src='https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/174.jpg' alt='Scarlet Spider' />
+      <img className='card__image' src={imageSrc} alt={heroName} onError={(e) => e.target.src = notFound} />
       <div className='card__bottom'>
-        <Subtitle text='Scarlet Spider' />
-        <Subtitle text='Spider-Carnage' />
+        <Subtitle text={heroName} />
+        <Subtitle text={heroPublisher} />
       </div>
     </div>
+    /* eslint-disable no-return-assign */
   )
 }
 
 export default Card
+
+Card.propTypes = {
+  imageSrc: string,
+  heroName: string,
+  heroPublisher: string
+}

@@ -2,27 +2,30 @@
   border-radius: 35px;
   position: relative;
   transition: all .2s ease-in-out;
+  width: 215px;
   cursor: pointer;
   &:hover {
     transform: scale(1.05);
   }
-  &__image  {
+  &__image {
+    width: 215px;
+    height: 290px;
     border-radius: 30px;
   }
   &__bottom {
     position: absolute;
-    bottom: 5px;
+    bottom: 4px;
     background-color: rgba(0,0,0, .7);
     border-radius: 0 0 30px 30px;
     width: 100%;
-    padding: 15px 50px;
+    padding: 10px 15px;
     text-align: center;
     transition: padding 300ms linear;
     &:hover {
-      padding: 25px 50px;
+      padding: 15px 15px;
     }
     h4 {
-      font-size: 1.5rem;
+      font-size: 1rem;
       font-weight: 400;
       letter-spacing: 1.5px;
       text-transform: unset;
