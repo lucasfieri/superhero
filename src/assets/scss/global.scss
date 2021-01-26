@@ -6,8 +6,13 @@
   vertical-align: baseline;
 }
 
-ol, ul {
+ol, ul, li {
+  outline: none;
 	list-style: none;
+}
+
+button {
+  outline: none;
 }
 
 html {
