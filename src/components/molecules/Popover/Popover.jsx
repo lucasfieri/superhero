@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { decidePopover } from '../../../ducks/popover'
 import { Popover as PopoverTiny } from 'react-tiny-popover'
 import Buttom from '../../atoms/Button/Button'
-import PropTypes from 'prop-types'
+import { element, string, arrayOf } from 'prop-types'
 import './style.scss'
 
 const Popover = ({ positions, content, buttonIcon, buttonVariation }) => {
@@ -31,9 +31,9 @@ const Popover = ({ positions, content, buttonIcon, buttonVariation }) => {
 export default Popover
 
 Popover.propTypes = {
-  positions: PropTypes.arrayOf(PropTypes.string),
-  children: PropTypes.element,
-  content: PropTypes.element,
-  buttonIcon: PropTypes.element,
-  buttonVariation: PropTypes.string
+  positions: arrayOf(string),
+  children: element,
+  content: element,
+  buttonIcon: element,
+  buttonVariation: string
 }
