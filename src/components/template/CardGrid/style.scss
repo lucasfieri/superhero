@@ -1,0 +1,72 @@
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 2rem;
+  padding: 25px 0;
+}
+
+.pagination {
+  margin: 15px auto;
+  display: flex;
+  list-style: none;
+  outline: none;
+}
+
+.pagination > li > a{
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+
+.rc-pagination-prev > svg, .rc-pagination-next > svg {
+  width: 10px;
+  cursor: pointer;
+  fill: #fff;
+  margin: 0 10px;
+}
+
+.rc-pagination-item-active {
+  a {
+    color: #FC3754;
+  }
+  border: 1px solid #FC3754;
+}
+
+.rc-pagination-item {
+  color: #fff;
+  &:hover {
+    font-weight: 600;
+    color: #FC3754;
+  }
+}
+
+.rc-pagination-prev, .rc-pagination-next, .rc-pagination-jump-prev, .rc-pagination-jump-next {
+  display: inline-block;
+  min-width: 28px;
+  height: 28px;
+  color: #fff;
+  font-family: Arial;
+  line-height: 28px;
+  text-align: center;
+  vertical-align: middle;
+  list-style: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+  button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    &:hover {
+      font-weight: 600;
+      color: #FC3754;
+    }
+    &::after {
+      display: block;
+      content: '•••';
+    }
+  }
+}
