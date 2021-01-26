@@ -12,9 +12,6 @@ const req = axios.create({
 const SuperHeroAPI = {
   getByQuery: async function (query) {
     return req.get(`/search/${query}`)
-  },
-  getById: async function (id) {
-    return req.get(`/${id}`)
   }
 }
 
