@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import './style.scss'
 
-const Title = ({ text }) => {
+const Title = ({ text, className = '', ...props }) => {
   return (
-    <h1 className='title'>
+    <h1 className={`title ${className}`} {...props}>
       {text}
     </h1>
   )
@@ -12,5 +12,6 @@ const Title = ({ text }) => {
 export default Title
 
 Title.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string,
+  className: PropTypes.string
 }

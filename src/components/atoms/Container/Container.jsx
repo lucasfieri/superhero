@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types'
+import { arrayOf, element, bool, string, oneOfType } from 'prop-types'
 import './style.scss'
 
-const Container = ({ children }) => (
-  <main className='container'>
+const Container = ({ children, variation = '' }) => (
+  <main className={`container ${variation}`}>
     {children}
   </main>
 )
@@ -10,5 +10,6 @@ const Container = ({ children }) => (
 export default Container
 
 Container.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element)
+  children: oneOfType([arrayOf(element), bool, string]),
+  variation: string
 }

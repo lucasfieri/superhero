@@ -8,6 +8,7 @@ import Title from '../../components/atoms/Title/Title'
 import Container from '../../components/atoms/Container/Container'
 import Glossary from '../../components/atoms/Glossary/Glossary'
 import CardGrid from '../../components/template/CardGrid/CardGrid'
+import Span from '../../components/atoms/Span/Span'
 
 import './style.scss'
 
@@ -41,7 +42,7 @@ function Search () {
       <SearchBox hasFilter />
       <Glossary />
       {isFetching && <Spinner />}
-      {(!hasHeroes && !isFetching) && <div>Sem resultados</div>}
+      {(!hasHeroes && !isFetching) && <Span>Sem resultados</Span>}
       {(hasHeroes && !isFetching) && <CardGrid />}
     </Container>
   )
