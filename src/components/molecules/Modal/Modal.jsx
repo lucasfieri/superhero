@@ -13,7 +13,7 @@ import './style.scss'
 
 const modalElement = document.getElementById('modal-root')
 
-const Modal = ({ className = null, fade = false, children }, ref) => {
+const Modal = ({ className = '', fade = false, children }, ref) => {
   const isModalOpen = useSelector(state => state.modal.isModalOpen)
   const dispatch = useDispatch()
 

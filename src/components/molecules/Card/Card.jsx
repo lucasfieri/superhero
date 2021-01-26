@@ -1,15 +1,31 @@
 import React from 'react'
 import Subtitle from '../../atoms/Subtitle/Subtitle'
 import notFound from '../../../assets/images/notfound.jpg'
-import { string } from 'prop-types'
+import { string, func, number } from 'prop-types'
 
 import './style.scss'
 
-const Card = ({ imageSrc, heroName, heroPublisher }) => {
+const Card = ({
+  imageSrc,
+  heroName,
+  heroPublisher,
+  handleClick,
+  index
+}) => {
   return (
     /* eslint-disable no-return-assign */
-    <div className='card'>
-      <img className='card__image' src={imageSrc} alt={heroName} onError={(e) => e.target.src = notFound} />
+    <div
+      className='card'
+      role='button'
+      onClick={handleClick}
+      tabIndex={index}
+    >
+      <img
+        className='card__image'
+        src={imageSrc}
+        alt={heroName}
+        onError={(e) => e.target.src = notFound}
+      />
       <div className='card__bottom'>
         <Subtitle text={heroName} />
         <Subtitle text={heroPublisher} />
@@ -24,5 +40,7 @@ export default Card
 Card.propTypes = {
   imageSrc: string,
   heroName: string,
-  heroPublisher: string
+  heroPublisher: string,
+  handleClick: func,
+  index: number
 }

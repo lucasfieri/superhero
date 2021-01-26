@@ -18,3 +18,9 @@ button {
 html {
   font-family: 'Segoe UI';
 }
+
+@media only screen and(min-width:1920px) {
+  body {
+    overflow: hidden;
+  }
+}
