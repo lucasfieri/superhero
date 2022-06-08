@@ -14,7 +14,7 @@ const SearchBox = ({ hasFilter }) => {
   const dispatch = useDispatch()
   const { inputSearch } = useSelector(state => ({ inputSearch: state.search.inputSearch }))
   return (
-    <div className='searchBox'>
+    <form className='searchBox' onSubmit={(e) => dispatch(fetchHeroes(e))}>
       <Input
         name='search_input'
         className='searchBox__input'
@@ -22,6 +22,7 @@ const SearchBox = ({ hasFilter }) => {
         onChange={(e) => dispatch(changeInputSearch(e.target.value))}
       />
       <Button
+        type='submit'
         variation='btn-primary searchBox__button'
         handleClick={() => dispatch(fetchHeroes())}
         icon={<SearchIcon />}
@@ -34,7 +35,7 @@ const SearchBox = ({ hasFilter }) => {
           content={<FilterForm />}
         />
       )}
-    </div>
+    </form>
   )
 }
 

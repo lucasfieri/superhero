@@ -46,11 +46,11 @@ const CardGrid = () => {
       </div>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel="Próximo >"
         onPageChange={handlePageClick}
         pageRangeDisplayed={8}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel="< Anterior"
         renderOnZeroPageCount={null}
         className='pagination'
       />

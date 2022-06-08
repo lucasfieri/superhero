@@ -57,8 +57,11 @@ export function changeInputSearch (inputSearch) {
   }
 }
 
-export const fetchHeroes = () => {
+export const fetchHeroes = (e) => {
   return async function (dispatch, getState) {
+    if(e) {
+      e.preventDefault()
+    }
     dispatch({ type: Types.CLICK_SEARCH })
     const { search } = getState()
     dispatch(push(`/${search.inputSearch}`))
