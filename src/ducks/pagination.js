@@ -1,27 +1,33 @@
 import Immutable from 'seamless-immutable'
 
 export const Types = {
-  SET_OFFSET: 'pagination/SET_OFFSET',
-  SET_DATA: 'pagination/SET_DATA'
+  SET_CURRENT_ITENS: 'pagination/SET_CURRENT_ITENS',
+  SET_ITEM_OFFSET: 'pagination/SET_ITEM_OFFSET',
+  SET_PAGE_COUNT: 'pagination/SET_PAGE_COUNT'
 }
 
 const initialState = Immutable({
-  offset: 0,
-  perPage: 8,
-  data: [{}]
+  currentItems: [{}],
+  pageCount: 0,
+  itemOffset: 0
 })
 
 export default function reducer (state = initialState, action) {
   switch (action.type) {
-    case Types.SET_OFFSET:
+    case Types.SET_CURRENT_ITENS:
       return {
         ...state,
-        offset: action.payload
+        currentItems: action.payload
       }
-    case Types.SET_DATA:
+    case Types.SET_ITEM_OFFSET:
       return {
         ...state,
-        data: action.payload
+        itemOffset: action.payload
+      }
+    case Types.SET_PAGE_COUNT:
+      return {
+        ...state,
+        pageCount: action.payload
       }
     default:
       return state
@@ -30,21 +36,24 @@ export default function reducer (state = initialState, action) {
 
 export function getCards () {
   return (dispatch, getState) => {
-    console.log('entrou')
     const { pagination, search } = getState()
     const { results } = search
-    const { offset, perPage } = pagination
-    if (results.length) {
-      const slice = results.slice(offset, offset + perPage)
-      console.log('aaaaaaaaa', slice)
-      dispatch({ type: Types.SET_DATA, payload: slice })
-    }
+    const { itemOffset } = pagination
+
+    const endOffset = itemOffset + 8;
+    const slice = results.slice(itemOffset, endOffset)
+    dispatch({ type: Types.SET_CURRENT_ITENS, payload: slice })
+    dispatch({ type: Types.SET_PAGE_COUNT, payload: Math.ceil(results.length / 8) })
   }
 }
 
-export function changeOffSet (selectedPage) {
-  return {
-    type: Types.SET_OFFSET,
-    payload: selectedPage
+export function changeOffSet (event) {
+  return (dispatch, getState) => {
+    const { search } = getState()
+    const { results } = search
+    const newOffset = (event.selected * 8) % results.length;
+    dispatch({ type: Types.SET_ITEM_OFFSET, payload: newOffset })
   }
 }
+
+

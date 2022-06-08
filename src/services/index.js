@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/3888545997845286'
+const BASE_URL = process.env.REACT_APP_BASE_URL
 
 const req = axios.create({
   baseURL: BASE_URL,

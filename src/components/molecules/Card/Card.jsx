@@ -1,6 +1,6 @@
 import React from 'react'
 import Subtitle from '../../atoms/Subtitle/Subtitle'
-import notFound from '../../../assets/images/notfound.jpg'
+import CardImage from '../../atoms/CardImage/CardImage'
 import { string, func, number } from 'prop-types'
 
 import './style.scss'
@@ -20,11 +20,9 @@ const Card = ({
       onClick={handleClick}
       tabIndex={index}
     >
-      <img
-        className='card__image'
-        src={imageSrc}
-        alt={heroName}
-        onError={(e) => e.target.src = notFound}
+      <CardImage
+        heroName={heroName}
+        imageSrc={imageSrc}
       />
       <div className='card__bottom'>
         <Subtitle text={heroName} />

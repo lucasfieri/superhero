@@ -8,13 +8,20 @@
     transform: scale(1.05);
   }
   &__image {
+    background-image: url('../../../assets/images/spinner.svg');
     width: 215px;
     height: 290px;
     border-radius: 30px;
+    &--loaded{
+      display: block;
+      width: 215px;
+      height: 290px;
+      border-radius: 30px;
+    }
   }
   &__bottom {
     position: absolute;
-    bottom: 4px;
+    bottom: 0;
     background-color: rgba(0,0,0, .7);
     border-radius: 0 0 30px 30px;
     width: 100%;

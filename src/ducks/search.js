@@ -72,11 +72,10 @@ export const fetchHeroesOnLoadPage = (path) => {
     try {
       const response = await SuperHeroAPI.getByQuery(path)
       if (response.data.error) {
-        throw new Error()
+        throw response.data.error
       }
       dispatch({ type: Types.FETCH_SUCCESS, payload: response?.data?.results })
     } catch (e) {
-      console.error('error', e)
       dispatch({ type: Types.FETCH_FAIL })
     }
   }

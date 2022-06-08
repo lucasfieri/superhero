@@ -7,6 +7,7 @@ import thunk from 'redux-thunk'
 import createRootReducer from './reducer'
 
 export const history = createBrowserHistory()
+const isDev = process.env.NODE_ENV === 'development'
 
 export default function configureStore (preloadedState) {
   const store = createStore(
@@ -16,7 +17,7 @@ export default function configureStore (preloadedState) {
       applyMiddleware(
         routerMiddleware(history),
         thunk,
-        logger
+        isDev && logger
       )
     )
   )

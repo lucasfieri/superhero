@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
-import { fetchHeroesOnLoadPage } from '../../ducks/search'
+import { changeInputSearch, fetchHeroesOnLoadPage } from '../../ducks/search'
 import { ReactComponent as Spinner } from '../../assets/images/spinner.svg'
 import SearchBox from '../../components/organims/SearchBox/SearchBox'
 import Title from '../../components/atoms/Title/Title'
@@ -22,14 +22,11 @@ function Search () {
   const { search } = useParams()
 
   const hasHeroes = results.some(result => result.id)
-  const handleClick = () => history.push('/')
-
-  useEffect(() => {
-    if (!hasHeroes) {
-      dispatch(fetchHeroesOnLoadPage(search))
-    }
-    // eslint-disable-next-line
-  }, [])
+  
+  const handleClick = () => {
+    dispatch(changeInputSearch(''))
+    history.push('/')
+  }
 
   useEffect(() => {
     dispatch(fetchHeroesOnLoadPage(search))
