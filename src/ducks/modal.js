@@ -2,11 +2,13 @@ import Immutable from 'seamless-immutable'
 
 export const Types = {
   OPEN: 'modal/OPEN',
-  CLOSE: 'modal/CLOSE'
+  CLOSE: 'modal/CLOSE',
+  CONTENT: 'modal/CONTENT',
 }
 
 const initialState = Immutable({
-  isModalOpen: false
+  isModalOpen: false,
+  content: {},
 })
 
 export default function reducer (state = initialState, action) {
@@ -21,8 +23,20 @@ export default function reducer (state = initialState, action) {
         ...state,
         isModalOpen: false
       }
+    case Types.CONTENT:
+      return {
+        ...state,
+        content: action.payload
+      }
     default:
       return state
+  }
+}
+
+export function selectHero (hero) {
+  return (dispatch) => {
+    dispatch({ type: Types.OPEN })
+    dispatch({ type: Types.CONTENT, payload: hero })
   }
 }
 
